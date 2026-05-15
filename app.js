@@ -159,7 +159,7 @@
     }
 
     const updatedEvent = {
-      id: eventId.value || crypto.randomUUID(),
+      id: eventId.value || createId(),
       title,
       start,
       end,
@@ -292,6 +292,14 @@
       typeof plannerEvent.start === "string" &&
       typeof plannerEvent.end === "string"
     );
+  }
+
+  function createId() {
+    if (globalThis.crypto && typeof globalThis.crypto.randomUUID === "function") {
+      return globalThis.crypto.randomUUID();
+    }
+
+    return `event-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
   }
 
   function showError(message) {
