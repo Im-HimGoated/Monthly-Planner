@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Month Planner</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="planner-panel" aria-label="Monthly planner">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Shared month planner</p>
+            <h1>Month Planner</h1>
+          </div>
+          <div class="topbar-actions">
+            <label class="month-picker">
+              <span>Month</span>
+              <input id="monthInput" type="month">
+            </label>
+            <button id="shareButton" class="primary-button" type="button">
+              Share read-only link
+            </button>
+          </div>
+        </header>
+
+        <div id="shareBox" class="share-box" hidden>
+          <label for="shareLink">Read-only link</label>
+          <div class="share-row">
+            <input id="shareLink" type="text" readonly>
+            <button id="copyButton" type="button">Copy</button>
+          </div>
+        </div>
+
+        <div id="readonlyNotice" class="readonly-notice" hidden>
+          You are viewing a shared read-only calendar.
+        </div>
+
+        <section class="calendar-wrap" aria-label="Calendar">
+          <div class="weekday-row" aria-hidden="true">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+          </div>
+          <div id="calendarGrid" class="calendar-grid"></div>
+        </section>
+      </section>
+
+      <aside id="eventPanel" class="event-panel" aria-label="Event editor">
+        <div class="panel-heading">
+          <p class="eyebrow">Event details</p>
+          <h2 id="formTitle">Add event</h2>
+        </div>
+
+        <form id="eventForm">
+          <input id="eventId" type="hidden">
+
+          <label>
+            <span>Title</span>
+            <input id="titleInput" type="text" placeholder="Debate meeting" required>
+          </label>
+
+          <label>
+            <span>Start date and time</span>
+            <input id="startInput" type="datetime-local" required>
+          </label>
+
+          <label>
+            <span>End date and time</span>
+            <input id="endInput" type="datetime-local" required>
+          </label>
+
+          <p id="formError" class="form-error" role="alert" hidden></p>
+
+          <div class="form-actions">
+            <button id="saveButton" class="primary-button" type="submit">Save event</button>
+            <button id="resetButton" type="button">Clear</button>
+            <button id="deleteButton" class="danger-button" type="button" hidden>Delete</button>
+          </div>
+        </form>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
